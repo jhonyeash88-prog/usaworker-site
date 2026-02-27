@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Automation | Passive Income</title>
+    <style>
+        :root {
+            --primary: #00d2ff;
+            --secondary: #3a7bd5;
+            --bg-dark: #0f172a;
+            --text-light: #f8fafc;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            padding: 2rem;
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .highlight {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+
+        /* TIMER STYLES */
+        .timer-container {
+            margin: 2rem auto;
+            max-width: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timer-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #progress-fill {
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            transition: width 1s linear;
+        }
+
+        #countdown {
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 1.2rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unlock <span class="highlight">Passive Income</span></h1>
+        <p>AI-driven income streams that work while you rest.</p>
+        
+        <div class="timer-container">
+            <div class="timer-label">Next Optimization In: <span id="countdown">30</span>s</div>
+            <div class="progress-bar-bg">
+                <div id="progress-fill"></div>
+            </div>
+        </div>
+
+        <a href="#" class="cta-button">Get Started Now</a>
+    </div>
+
+    <script>
+        const duration = 30; // Seconds
+        let timeLeft = duration;
+        const countdownEl = document.getElementById('countdown');
+        const progressFill = document.getElementById('progress-fill');
+
+        function updateTimer() {
+            timeLeft--;
+            
+            if (timeLeft < 0) {
+                timeLeft = duration; // Reset to 30
+                // Optional: Add a function here to refresh data
+                console.log("Automation sequence reset!");
+            }
+
+            // Update Text
+            countdownEl.innerText = timeLeft;
+
+            // Update Progress Bar width percentage
+            const percentage = (timeLeft / duration) * 100;
+            progressFill.style.width = percentage + "%";
+        }
+
+        // Run every 1 second
+        setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>
