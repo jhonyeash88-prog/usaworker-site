@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="30">
+    <title>AI Passive Income | Smart Automation</title>
+    <style>
+        :root {
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --bg: #0b0e14;
+            --glass: rgba(255, 255, 255, 0.05);
+            --text: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at top left, rgba(0, 242, 254, 0.15), transparent 400px),
+                radial-gradient(circle at bottom right, rgba(79, 172, 254, 0.15), transparent 400px);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 2rem;
+            border-radius: 30px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        /* AUTO-RELOAD COMPONENTS */
+        .reload-status {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(79, 172, 254, 0.2);
+        }
+
+        .timer-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+        }
+
+        .progress-track {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #progress-fill {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            box-shadow: 0 0 10px var(--primary);
+            transition: width 1s linear;
+        }
+
+        .cta-button {
+            background: #ffffff;
+            color: #000;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 242, 254, 0.3);
+            background: var(--primary);
+        }
+
+        #timer-countdown {
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-container">
+        <h1>Unlock <span class="gradient-text">Passive Income</span></h1>
+        <p>Create AI-driven income streams that work while you rest. No coding. No stress. Just pure automated earnings.</p>
+
+        <div class="reload-status">
+            <div class="timer-info">
+                <span>System Pulse Active</span>
+                <span>Next Update: <span id="timer-countdown">30</span>s</span>
+            </div>
+            <div class="progress-track">
+                <div id="progress-fill"></div>
+            </div>
+        </div>
+
+        <a href="#" class="cta-button">Access Dashboard</a>
+    </div>
+
+    <script>
+        const REFRESH_TIME = 30; // seconds
+        let timeLeft = REFRESH_TIME;
+        const countdownDisplay = document.getElementById('timer-countdown');
+        const progressBar = document.getElementById('progress-fill');
+
+        const timer = setInterval(() => {
+            timeLeft--;
+            
+            // Update Text
+            countdownDisplay.textContent = timeLeft;
+
+            // Update Progress Bar
+            const widthPercentage = (timeLeft / REFRESH_TIME) * 100;
+            progressBar.style.width = widthPercentage + "%";
+
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                location.reload(); // Manual fallback reload
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
